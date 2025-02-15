@@ -20,22 +20,22 @@ while true; do
 done
 
 echo -e 'Script will format EFI - /dev/'$1'1 - with FAT32 filesystem\n' 
-mkfs.fat -F32 -n EFI /dev/$systemdisk'1'
+mkfs.fat -F32 -n EFI /dev/"$systemdisk"'1'
 
 echo -e '\nScript will format Boot - /dev/'$1'2 - with ext4 filesystem\n'
-mkfs.ext4 -L Boot /dev/$systemdisk'2'
+mkfs.ext4 -L Boot /dev/"$systemdisk"'2'
 
 echo -e '\nScript will format Root - /dev/'$1'3 - with ext4 filesystem\n'
-mkfs.ext4 -L Root /dev/$systemdisk'3'
+mkfs.ext4 -L Root /dev/"$systemdisk"'3'
 
 echo -e '\nMounting file system and enabling swapfile\n'
-mount /dev/$systemdisk'3' /mnt
+mount /dev/"$systemdisk"'3' /mnt
 mkdir /mnt/boot
-mount /dev/$systemdisk'2' /mnt/boot
+mount /dev/"$systemdisk"'2' /mnt/boot
 mkdir /mnt/boot/efi
-mount /dev/$systemdisk'1' /mnt/boot/efi
+mount /dev/"$systemdisk"'1' /mnt/boot/efi
 mkdir /mnt/home
-mount /dev/$systemdisk'4' /mnt/home
+mount /dev/"$systemdisk"'4' /mnt/home
 
 set response = "0"
 
@@ -56,7 +56,7 @@ while true; do
 	esac
 done
 
-mkswap -U clear --size $swapsize --file /mnt/swapfile
+mkswap -U clear --size "$swapsize" --file /mnt/swapfile
 swapon /mnt/swapfile
 
 if [ -d /mnt/home/renata.bak ]; then
