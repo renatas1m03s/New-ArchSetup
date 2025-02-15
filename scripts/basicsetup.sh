@@ -24,7 +24,7 @@ echo -e '\n\n#### Configuring hostname\n'
 
 echo sagittarius > /etc/hostname
 
-cat ./assets/hosts.txt >> /etc/hosts
+cat /home/ArchSetup/assets/hosts.txt >> /etc/hosts
 
 echo -e '\n\n#### Defining root password:\n'
 
