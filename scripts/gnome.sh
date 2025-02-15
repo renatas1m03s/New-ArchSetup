@@ -42,7 +42,7 @@ echo -e "\n\n#### Optional: After finish execute \n\nomf install lambda && omf t
 
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > /tmp/install
 
-fish /tmp/install --path=~/.local/share/omf --config=~/.config/omf & exit > NULL
+fish /tmp/install --path=~/.local/share/omf --config=~/.config/omf & exit > /dev/null
 
 echo -e "\n\n#### Gnome installed.\n"
 
