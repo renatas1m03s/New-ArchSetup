@@ -15,7 +15,3 @@ pacman-key --init
 pacman-key --populate archlinux
 pacman -Sy --noconfirm git
 git clone https://github.com/renatas1m03s/New-ArchSetup ArchSetup
-
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-
-echo -e "Finished..."
