@@ -15,3 +15,15 @@ pacman-key --init
 pacman-key --populate archlinux
 pacman -Sy --noconfirm git
 git clone https://github.com/renatas1m03s/New-ArchSetup ArchSetup
+cd ArchSetup
+
+while true; do
+	read -p "\n\n#### Proceed with Arch Setup (y/n):" -n 1 response
+	
+	case "$response" in
+		[yY]) sh ./first.sh;
+		      break;;
+		[nN]) echo -e "\n"; break;;
+		*) echo -e "\n"
+	esac
+done

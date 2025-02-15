@@ -32,7 +32,6 @@ while true; do
                 [yY]) pacstrap /mnt base linux-firmware linux-zen linux-zen-headers dkms base-devel amd-ucode reflector;
 		              echo -e "\n\n ### Generating fstab\n\n";
 		              genfstab -U -p /mnt >> /mnt/etc/fstab;
-		              # cat ./extra_fstab.txt >> /mnt/etc/fstab
                       cat /mnt/etc/fstab;
 		              echo -e "\n\n ### Copying ArchSetup files.. ###\n\n";
 		              mkdir /mnt/home/ArchSetup
@@ -50,12 +49,26 @@ while true; do
         read -p "\n\n###Finish basic Arch Linux setup (y/n):" -n 1 response
 
         case "$response" in
-                [yY]) arch-chroot /mnt sh /home/ArchSetup/scripts/basicsetup.sh;
-		      break;;
-                [nN]) echo -e "\n"; break;;
+             [yY]) arch-chroot /mnt sh /home/ArchSetup/scripts/basicsetup.sh;
+		           break;;
+             [nN]) echo -e "\n"; break;;
                 *) echo -e "\n"
         esac
 done
+
+set response = "1"
+
+while true; do
+        read -p "\n\n###Configure fstab sagittarius file (y/n):" -n 1 response
+
+        case "$response" in
+             [yY]) cat ./assets/extra_fstab.txt >> /mnt/etc/fstab;
+		           break;;
+             [nN]) echo -e "\n"; break;;
+                *) echo -e "\n"
+        esac
+done
+
 
 set response = "1"
 

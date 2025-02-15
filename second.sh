@@ -70,6 +70,8 @@ while true; do
 	esac
 done
 
+set response = "1"
+
 while true; do
     echo -e "\n\n### Choose your Desktop Enviroment:\n     1 - Gnome\n     2 - Plasma\n     3 - Nothing\n\n"
 
@@ -85,3 +87,69 @@ while true; do
 	esac
 done
 
+set response = "1"
+
+while true; do
+	read -p "\n\n#### Configure eno1 with fixed ip address (y/n):" -n 1 response
+	
+	case "$response" in
+		[yY]) fish /home/ArchSetup/scripts/network.sh;
+		      break;;
+		[nN]) echo -e "\n"; break;;
+		*) echo -e "\n"
+	esac
+done
+
+set response = "1"
+
+while true; do
+	read -p "\n\n#### Move renata.bak folders (y/n):" -n 1 response
+	
+	case "$response" in
+		[yY]) mv -v /home/renata.bak/{AppImage,Documents,Downloads,Pictures,Scripts,SystemInfo,Temp,Videos}  ~/
+		      break;;
+		[nN]) echo -e "\n"; break;;
+		*) echo -e "\n"
+	esac
+done
+
+set response = "1"
+
+while true; do
+	read -p "\n\n#### Install office and colaborative apps (y/n):" -n 1 response
+	
+	case "$response" in
+		[yY]) sh /home/ArchSetup/scripts/apps.sh;
+		      break;;
+		[nN]) echo -e "\n"; break;;
+		*) echo -e "\n"
+	esac
+done
+
+set response = "1"
+
+while true; do
+	read -p "\n\n#### Install QEMU and Virt-Manager (y/n):" -n 1 response
+	
+	case "$response" in
+		[yY]) sh /home/ArchSetup/scripts/virt-manager.sh;
+		      break;;
+		[nN]) echo -e "\n"; break;;
+		*) echo -e "\n"
+	esac
+done
+
+echo -e "\n\n#### Setup finished \n\n"
+
+set response = "1"
+
+while true; do
+        read -p "\n\n###reboot (y/n):" -n 1 response
+
+        case "$response" in
+                [yY]) sudo reboot; 
+                      break;;
+                [nN]) echo -e "\n"; break;;
+                *) echo -e "\n"
+        esac
+done
