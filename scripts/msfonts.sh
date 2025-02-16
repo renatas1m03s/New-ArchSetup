@@ -8,4 +8,4 @@ sudo cp -rv /tmp/MS-Fonts/* /usr/share/fonts/WindowsFonts/
 sudo chmod 644 /usr/share/fonts/WindowsFonts/*
 sudo fc-cache –force
 
-echo "\n\n### MS-Fonts installed\n
+echo "\n\n### MS-Fonts installed\n"
