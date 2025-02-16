@@ -2,8 +2,8 @@
 
 echo -e "\n\n### Instaling Tela Icons...\n"
 
-if [ ! -f /home/ArchSetup/assets/telaicons.7z ]; then
-	if [ ! -d /home/renata/.local/share/icons ]; then
+if [ -e "/home/ArchSetup/assets/telaicons.7z" ]; then
+	if ! [ -d /home/renata/.local/share/icons ]; then
 		mkdir /home/renata/.local/share/icons
 	fi
 	7z x /home/ArchSetup/assets/telaicons.7z -o/home/renata/.local/share/icons/ 

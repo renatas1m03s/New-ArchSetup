@@ -12,6 +12,8 @@ clear
 
 echo -e "\n\n########################################################\n\n    Installing a DE on ArchLinux System\n\n########################################################\n\n"
 
+sudo chown -R renata:users /home/ArchSetup
+
 export response="1"
 while true; do
 	read -p "#### Configure keyboard and timezone (y/n)? " -n 1 response
@@ -66,7 +68,7 @@ export response="1"
 while true; do
 	read -p "#### Prepare system for Davinci Resolve with AMD GPU (y/n)? " -n 1 response
 	case "$response" in
-		[yY]) yay -Sy --noconfirm opencl-amd;
+		[yY]) echo -e "\n\n"; yay -Sy --noconfirm opencl-amd;
 		      break;;
 		[nN]) echo -e "\n"; break;;
 		*) echo -e "\n"
