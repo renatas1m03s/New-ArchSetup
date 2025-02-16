@@ -122,6 +122,17 @@ done
 
 export response="1"
 while true; do
+	read -p "#### Install Tela Icons (y/n)? " -n 1 response
+	case "$response" in
+		[yY]) sh /home/ArchSetup/scripts/telaicons.sh;
+		      break;;
+		[nN]) echo -e "\n"; break;;
+		*) echo -e "\n"
+	esac
+done
+
+export response="1"
+while true; do
 	read -p "#### Install office and colaborative apps (y/n)? " -n 1 response
 	case "$response" in
 		[yY]) sh /home/ArchSetup/scripts/apps.sh;
