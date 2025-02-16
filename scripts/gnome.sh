@@ -18,7 +18,7 @@ sudo cp -v ./assets/ufraw.thumbnailer /usr/share/thumbnailers/
 
 mkdir -p /home/renata/.config/alacritty/
 
-cp -v ./assets/alacritty/* /home/renata/.config/alacritty/
+cp -v /home/ArchSetup/assets/alacritty/* /home/renata/.config/alacritty/
 
 yay -S --needed  --noconfirm adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji
 
@@ -29,20 +29,11 @@ sudo systemctl enable ModemManager
 sudo systemctl enable tuned  
 sudo systemctl enable tuned-ppd
 
-cp -v ./assets/functions/* /home/renata/.config/fish/functions/
-
-# mv -v /home/renata.bak/.local/share/icons/Te* /home/renata/.local/share/icons
+cp -v /home/ArchSetup/assets/functions/* /home/renata/.config/fish/functions/
 
 yay -Sy --noconfirm gnome-shell-extension-dash-to-dock gnome-shell-extension-appindicator-git gnome-shell-extension-arch-update
 
 sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
 sudo chmod a+rx /usr/local/bin/yt-dlp
 
-echo -e "\n\n#### Optional: After finish execute \n\nomf install lambda && omf theme lambda\n"
-
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > /tmp/install
-
-fish /tmp/install --path=~/.local/share/omf --config=~/.config/omf & exit > /dev/null
-
 echo -e "\n\n#### Gnome installed.\n"
-

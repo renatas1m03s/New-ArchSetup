@@ -14,11 +14,10 @@ echo -e "#### IMPORTANT ####\n\nAssuming nvme0n1 as system disk and EFI, Boot, R
 export response="1"
 
 while true; do
-	echo -e "\n\n### "
-	read -p "Proceed with EFI, Boot and Root formatting (y/n)?" -n 1 response
+	read -p "### Proceed with EFI, Boot and Root formatting (y/n)? " -n 1 response
 	
 	case "$response" in
-		[yY]) sh /root/ArchSetup/scripts/createfs.sh vda; break;;
+		[yY]) sh /root/ArchSetup/scripts/createfs.sh; break;;
 		[nN]) echo -e "\n"; break;;
 		*) echo -e "\n"
 	esac
@@ -27,8 +26,7 @@ done
 export response="1"
 
 while true; do
-        echo -e "\n\n### "
-        read -p "Proceed with pacstrap essential files to arch (y/n)?" -n 1 response
+        read -p "### Proceed with pacstrap essential files to arch (y/n)? " -n 1 response
 
         case "$response" in
               [yY]) pacstrap /mnt base linux-firmware linux-zen linux-zen-headers dkms base-devel amd-ucode reflector;
@@ -48,8 +46,7 @@ done
 export response="1"
 
 while true; do
-        echo -e "\n\n### "
-        read -p "Proceed with chroot operation (y/n)?" -n 1 response
+        read -p "### Proceed with chroot operation (y/n)? " -n 1 response
 
         case "$response" in
              [yY]) arch-chroot /mnt sh /home/ArchSetup/scripts/basicsetup.sh;
@@ -62,21 +59,23 @@ done
 export response="1"
 
 while true; do
-        read -p "\n\n###Configure fstab sagittarius file (y/n):" -n 1 response
+        read -p "### Configure fstab sagittarius file (y/n)? " -n 1 response
 
         case "$response" in
              [yY]) cat ./assets/extra_fstab.txt >> /mnt/etc/fstab;
+		           cat /mnt/etc/fstab;
 		           break;;
              [nN]) echo -e "\n"; break;;
                 *) echo -e "\n"
         esac
 done
 
+echo -e '\n\n#### Basic setup is finished...\n\n'
 
 export response="1"
 
 while true; do
-        read -p "\n\n###reboot (y/n)?" -n 1 response
+        read -p "### Reboot (y/n)? " -n 1 response
 
         case "$response" in
                 [yY]) reboot; 

@@ -10,25 +10,27 @@
 
 echo -e "\n\n########################################################\n\n    Installing a DE on ArchLinux System\n\n########################################################\n\n"
 
-set response = "1"
+export response="1"
 
 while true; do
-	read -p "\n\n#### Configure keyboard and timezone (y/n):" -n 1 response
+	read -p "#### Configure keyboard and timezone (y/n)? " -n 1 response
 	
 	case "$response" in
 		[yY]) sudo localectl set-keymap us-acentos;
+		      localectl;
 		      sudo timedatectl set-timezone America/Fortaleza;
 		      sudo timedatectl set-ntp true;
+		      timedatectl;
 		      break;;
 		[nN]) echo -e "\n"; break;;
 		*) echo -e "\n"
 	esac
 done
 
-set response = "1"
+export response="1"
 
 while true; do
-	read -p "\n\n#### Proceed with yay installation (y/n):" -n 1 response
+	read -p "#### Proceed with yay installation (y/n)? " -n 1 response
 	
 	case "$response" in
 		[yY]) sh /home/ArchSetup/scripts/yay.sh;
@@ -38,12 +40,12 @@ while true; do
 	esac
 done
 
-set response = "1"
+export response="1"
 
 while true; do
     echo -e "\n\n### Choose your graphic driver situation:\n     1 - Mesa only\n     2 - Nvidia Open plus Mesa\n     3 - Nvidia only\n     4 - Nothing\n\n"
 
-	read -p "\n\n#### Choose your option:" -n 1 response
+	read -p "#### Option: " -n 1 response
 
 	case "$response" in
 		[1]) sh /home/ArchSetup/scripts/mesa.sh;
@@ -57,10 +59,10 @@ while true; do
 	esac
 done
 
-set response = "1"
+export response="1"
 
 while true; do
-	read -p "\n\n#### Prepare system for Davinci Resolve with AMD GPU(y/n):" -n 1 response
+	read -p "#### Prepare system for Davinci Resolve with AMD GPU (y/n)? " -n 1 response
 	
 	case "$response" in
 		[yY]) yay -Sy --noconfirm opencl-amd;
@@ -70,12 +72,12 @@ while true; do
 	esac
 done
 
-set response = "1"
+export response="1"
 
 while true; do
     echo -e "\n\n### Choose your Desktop Enviroment:\n     1 - Gnome\n     2 - Plasma\n     3 - Nothing\n\n"
 
-	read -p "\n\n#### Choose your option:" -n 1 response
+	read -p "#### Option: " -n 1 response
 
 	case "$response" in
 		[1]) sh /home/ArchSetup/scripts/gnome.sh;
@@ -87,10 +89,10 @@ while true; do
 	esac
 done
 
-set response = "1"
+export response="1"
 
 while true; do
-	read -p "\n\n#### Configure eno1 with fixed ip address (y/n):" -n 1 response
+	read -p "#### Configure eno1 with fixed ip address (y/n)? " -n 1 response
 	
 	case "$response" in
 		[yY]) fish /home/ArchSetup/scripts/network.sh;
@@ -100,10 +102,10 @@ while true; do
 	esac
 done
 
-set response = "1"
+export response="1"
 
 while true; do
-	read -p "\n\n#### Move renata.bak folders (y/n):" -n 1 response
+	read -p "#### Move renata.bak folders (y/n)? " -n 1 response
 	
 	case "$response" in
 		[yY]) mv -v /home/renata.bak/{AppImage,Documents,Downloads,Pictures,Scripts,SystemInfo,Temp,Videos}  ~/
@@ -113,10 +115,10 @@ while true; do
 	esac
 done
 
-set response = "1"
+export response="1"
 
 while true; do
-	read -p "\n\n#### Install office and colaborative apps (y/n):" -n 1 response
+	read -p "#### Install office and colaborative apps (y/n)? " -n 1 response
 	
 	case "$response" in
 		[yY]) sh /home/ArchSetup/scripts/apps.sh;
@@ -126,10 +128,10 @@ while true; do
 	esac
 done
 
-set response = "1"
+export response="1"
 
 while true; do
-	read -p "\n\n#### Install QEMU and Virt-Manager (y/n):" -n 1 response
+	read -p "#### Install QEMU and Virt-Manager (y/n)? " -n 1 response
 	
 	case "$response" in
 		[yY]) sh /home/ArchSetup/scripts/virt-manager.sh;
@@ -141,10 +143,10 @@ done
 
 echo -e "\n\n#### Setup finished \n\n"
 
-set response = "1"
+export response="1"
 
 while true; do
-        read -p "\n\n###reboot (y/n):" -n 1 response
+        read -p "### Reboot (y/n)? " -n 1 response
 
         case "$response" in
                 [yY]) sudo reboot; 

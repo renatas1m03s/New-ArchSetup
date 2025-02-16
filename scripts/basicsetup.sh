@@ -22,17 +22,48 @@ pacman -Sy --noconfirm nano vim vi fish
 
 echo -e '\n\n#### Configuring hostname\n'
 
-echo sagittarius > /etc/hostname
+export response="1"
 
-cat /home/ArchSetup/assets/hosts.txt >> /etc/hosts
+while true; do
+    echo -e "\n\n### Hostname:\n     1 - sagittarius\n     2 - phoenix\n     3 - linuxtest\n     4 - Custom\n\n"
+
+	read -p "#### Options: " -n 1 response
+
+	case "$response" in
+		[1]) echo sagittarius > /etc/hostname;
+		     cat /home/ArchSetup/assets/hosts.txt >> /etc/hosts;
+		     sed -i s/#HOSTNAME/sagittarius/g /etc/hosts;
+		     break;;
+		[2]) echo phoenix > /etc/hostname;
+		     cat /home/ArchSetup/assets/hosts.txt >> /etc/hosts;
+		     sed -i s/#HOSTNAME/phoenix/g /etc/hosts;
+		     break;;
+		[3]) echo linuxtest > /etc/hostname;
+		     cat /home/ArchSetup/assets/hosts.txt >> /etc/hosts;
+		     sed -i s/#HOSTNAME/linuxtest/g /etc/hosts;
+		     break;;
+		[4]) read -p "Custom hostname: " customhostname;
+		     echo $customhostname > /etc/hostname;
+		     cat /home/ArchSetup/assets/hosts.txt >> /etc/hosts;
+		     sed -i s/#HOSTNAME/$customhostname/g /etc/hosts;
+		     break;;
+		  *) echo -e "\n"
+	esac
+done
 
 echo -e '\n\n#### Defining root password:\n'
 
-passwd
+read -s -p "Root and Renata password: " senha
+
+echo -e "\n"
+
+echo $senha | passwd --stdin
 
 echo -e '\n\n#### Creating main user:\n'
 
-useradd -m -g users -G wheel -s /usr/bin/fish renata && passwd renata
+useradd -m -g users -G wheel -s /usr/bin/fish renata
+
+echo $senha | passwd renata --stdin
 
 sleep 2
 
@@ -60,3 +91,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 sed -i 's/#Port 22/Port 3389/g' /etc/ssh/sshd_config
 sed -i 's/#AddressFamily any/AddressFamily inet/g' /etc/ssh/sshd_config
+
+

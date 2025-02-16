@@ -16,8 +16,6 @@ pacman-key --populate archlinux
 pacman -Sy --noconfirm git
 git clone https://github.com/renatas1m03s/New-ArchSetup ArchSetup
 
-cd /root/ArchSetup
 
-echo -e "\n\n#### System prepared, now just execute first.sh script...\n"
 
-pwd
+echo -e "\n\n#### System prepared, now just execute /root/ArchSetup/first.sh script...\n"
