@@ -10,7 +10,7 @@ yay -Sy --needed --noconfirm gnome-nettool gnome-usage gnome-multi-writer fwupd 
 
 sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 
-yay -Sy --needed --noconfirm inetutils dnsutils conky openconnect networkmanager-openconnect modemmanager gdm-settings
+yay -Sy --needed --noconfirm inetutils dnsutils conky openconnect networkmanager-openconnect modemmanager gdm-settings dconf-editor
 
 yay -Sy --needed  --noconfirm vlc fastfetch openvpn google-chrome usb_modeswitch update-grub nufraw geany p7zip btop pacman-contrib
 
@@ -29,7 +29,12 @@ sudo systemctl enable ModemManager
 sudo systemctl enable tuned  
 sudo systemctl enable tuned-ppd
 
+if [ ! -d ~/.local/share/applications ]; then
+	mkdir ~/.local/share/applications
+fi
+
 cp -v /home/ArchSetup/assets/functions/* /home/renata/.config/fish/functions/
+cp -v /home/ArchSetup/assets/apps/* /home/renata/.local/share/applications/
 
 yay -Sy --noconfirm gnome-shell-extension-dash-to-dock gnome-shell-extension-appindicator-git gnome-shell-extension-arch-update
 
