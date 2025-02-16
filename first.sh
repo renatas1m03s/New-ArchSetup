@@ -26,8 +26,9 @@ done
 export response="1"
 
 while true; do
+        echo -e "\n\n"
         read -p "### Proceed with pacstrap essential files to arch (y/n)? " -n 1 response
-
+        echo -e "\n\n"
         case "$response" in
               [yY]) pacstrap /mnt base linux-firmware linux-zen linux-zen-headers dkms base-devel amd-ucode reflector;
 				    echo -e "\n\n ### Generating fstab\n\n";
