@@ -36,7 +36,7 @@ while true; do
 				    cat /mnt/etc/fstab;
 				    echo -e "\n\n ### Copying ArchSetup files.. ###\n\n";
 				    mkdir /mnt/home/ArchSetup
-				    cp -rv ./* /mnt/home/ArchSetup;
+				    cp -rv /root/ArchSetup/* /mnt/home/ArchSetup/;
 				    echo -e "\n\n";
 				    break;;
                 [nN]) echo -e "\n"; break;;
@@ -45,7 +45,6 @@ while true; do
 done
 
 export response="1"
-
 while true; do
         read -p "### Proceed with chroot operation (y/n)? " -n 1 response
 
@@ -58,10 +57,9 @@ while true; do
 done
 
 export response="1"
-
 while true; do
+        echo -e "\n\n"
         read -p "### Configure fstab sagittarius file (y/n)? " -n 1 response
-
         case "$response" in
              [yY]) cat ./assets/extra_fstab.txt >> /mnt/etc/fstab;
 		           cat /mnt/etc/fstab;
@@ -74,10 +72,8 @@ done
 echo -e '\n\n#### Basic setup is finished...\n\n'
 
 export response="1"
-
 while true; do
         read -p "### Reboot (y/n)? " -n 1 response
-
         case "$response" in
                 [yY]) reboot; 
                       break;;
