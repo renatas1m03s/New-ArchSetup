@@ -18,4 +18,4 @@ git clone https://github.com/renatas1m03s/New-ArchSetup ArchSetup
 
 
 
-echo -e "\n\n#### System prepared, now just execute /root/ArchSetup/first.sh script...\n"
+echo -e "\n\n#### System prepared, now just execute \"sh /root/ArchSetup/first.sh\" script...\n"
